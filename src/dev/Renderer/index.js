@@ -5,12 +5,8 @@ import Context from "../../App";
 
 import { Renderer as PrismaCmsRenderer } from '@prisma-cms/front'
 
-import MainMenu from './MainMenu';
 
-
-// const DevApp = ({value}) => value || "App";
-
-class DevApp extends Component {
+class App extends Component {
 
   static contextType = Context;
 
@@ -47,7 +43,7 @@ class DevRenderer extends PrismaCmsRenderer {
       {
         exact: true,
         path: "/",
-        component: DevApp,
+        component: App,
       },
       // {
       //   path: "*",
@@ -58,12 +54,6 @@ class DevRenderer extends PrismaCmsRenderer {
   }
 
 
-  renderMenu() {
-
-    return <MainMenu />
-  }
-
-
   render() {
 
     const {
@@ -71,13 +61,9 @@ class DevRenderer extends PrismaCmsRenderer {
       ...other
     } = this.props;
 
-    return <Context.Provider
-      value={{ value: "Test value" }}
-    >
-      {pure ? <DevApp
-        {...other}
-      /> : super.render()}
-    </Context.Provider>;
+    return pure ? <App
+      {...other}
+    /> : super.render();
 
   }
 
