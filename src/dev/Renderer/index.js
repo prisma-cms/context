@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
 
-import App, {
-  ContextProvider, 
-  SubscriptionProvider,
-} from "../../App";
+import Context from "../../App";
 
 import { Renderer as PrismaCmsRenderer } from '@prisma-cms/front'
 
 import MainMenu from './MainMenu';
 
+
+// const DevApp = ({value}) => value || "App";
+
+class DevApp extends Component {
+
+  static contextType = Context;
+
+  render() {
+
+    const {
+      value,
+    } = this.context;
+
+    return value || "No context value";
+  }
+
+}
 
 class DevRenderer extends PrismaCmsRenderer {
 
@@ -33,7 +47,7 @@ class DevRenderer extends PrismaCmsRenderer {
       {
         exact: true,
         path: "/",
-        component: App,
+        component: DevApp,
       },
       // {
       //   path: "*",
@@ -57,13 +71,13 @@ class DevRenderer extends PrismaCmsRenderer {
       ...other
     } = this.props;
 
-    return <ContextProvider>
-      <SubscriptionProvider>
-        {pure ? <App
-          {...other}
-        /> : super.render()}
-      </SubscriptionProvider>
-    </ContextProvider>;
+    return <Context.Provider
+      value={{ value: "Test value" }}
+    >
+      {pure ? <DevApp
+        {...other}
+      /> : super.render()}
+    </Context.Provider>;
 
   }
 
