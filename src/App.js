@@ -3,6 +3,7 @@ import {
 } from 'react';
 import shallowEqual from 'fbjs/lib/shallowEqual';
 
+import URI from "urijs";
 
 export default createContext({}, function (prevContext, context) {
 
@@ -49,36 +50,61 @@ export default createContext({}, function (prevContext, context) {
 
             break;
 
-          case "query":
+          case "uri":
 
+            if (value instanceof URI) {
 
-            if (!shallowEqual(value, prevValue)) {
-
-              if (process.env.NODE_ENV === "development") {
-
-                console.error("@prisma-cms/context changed query !shallowEqual", prevValue, value);
-
-              }
-
-              if (JSON.stringify(value) !== JSON.stringify(prevValue)) {
-
-                if (process.env.NODE_ENV === "development") {
-
-                  console.error("@prisma-cms/context changed query !JSON.stringify Equal",
-                    JSON.stringify(prevValue, true, 2),
-                    JSON.stringify(value, true, 2)
-                  );
-
-                }
+              if (!prevValue || !(prevValue instanceof URI) || prevValue.resource() !== value.resource()) {
 
                 changes.push({
                   key,
                   value,
                   prevValue,
                 });
+
               }
 
             }
+            else {
+              changes.push({
+                key,
+                value,
+                prevValue,
+              });
+            }
+
+            break;
+
+          case "query":
+
+
+            // if (!shallowEqual(value, prevValue)) {
+
+            //   if (process.env.NODE_ENV === "development") {
+
+            //     console.error("@prisma-cms/context changed query !shallowEqual", prevValue, value);
+
+            //   }
+
+            //   if (JSON.stringify(value) !== JSON.stringify(prevValue)) {
+
+            //     if (process.env.NODE_ENV === "development") {
+
+            //       console.error("@prisma-cms/context changed query !JSON.stringify Equal",
+            //         JSON.stringify(prevValue, true, 2),
+            //         JSON.stringify(value, true, 2)
+            //       );
+
+            //     }
+
+            //     changes.push({
+            //       key,
+            //       value,
+            //       prevValue,
+            //     });
+            //   }
+
+            // }
 
 
             break;

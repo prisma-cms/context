@@ -1,3 +1,8 @@
+1.4.2
+=================================
+- Do not watch query changes
+- Added watch uri changes
+
 1.4.1
 =================================
 - Added more information about changes
