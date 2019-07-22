@@ -1,3 +1,8 @@
+1.4.0
+=================================
+- Upgrade boilerplate
+- Added query and router is checked
+
 1.3.2
 =================================
 - Added default context value
