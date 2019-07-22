@@ -1,3 +1,7 @@
+1.4.3
+=================================
+- Restore watch query changes
+
 1.4.2
 =================================
 - Do not watch query changes

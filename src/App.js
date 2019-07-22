@@ -78,33 +78,33 @@ export default createContext({}, function (prevContext, context) {
           case "query":
 
 
-            // if (!shallowEqual(value, prevValue)) {
+            if (!shallowEqual(value, prevValue)) {
 
-            //   if (process.env.NODE_ENV === "development") {
+              if (process.env.NODE_ENV === "development") {
 
-            //     console.error("@prisma-cms/context changed query !shallowEqual", prevValue, value);
+                console.error("@prisma-cms/context changed query !shallowEqual", prevValue, value);
 
-            //   }
+              }
 
-            //   if (JSON.stringify(value) !== JSON.stringify(prevValue)) {
+              if (JSON.stringify(value) !== JSON.stringify(prevValue)) {
 
-            //     if (process.env.NODE_ENV === "development") {
+                if (process.env.NODE_ENV === "development") {
 
-            //       console.error("@prisma-cms/context changed query !JSON.stringify Equal",
-            //         JSON.stringify(prevValue, true, 2),
-            //         JSON.stringify(value, true, 2)
-            //       );
+                  console.error("@prisma-cms/context changed query !JSON.stringify Equal",
+                    JSON.stringify(prevValue, true, 2),
+                    JSON.stringify(value, true, 2)
+                  );
 
-            //     }
+                }
 
-            //     changes.push({
-            //       key,
-            //       value,
-            //       prevValue,
-            //     });
-            //   }
+                changes.push({
+                  key,
+                  value,
+                  prevValue,
+                });
+              }
 
-            // }
+            }
 
 
             break;
