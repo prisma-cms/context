@@ -31,49 +31,49 @@ export default createContext({}, function (prevContext, context) {
 
         switch (key) {
 
-          case "router":
+          // case "router":
 
-            if (value && (!prevValue || prevValue.history.location.pathname !== value.history.location.pathname)) {
+          //   if (value && (!prevValue || prevValue.history.location.pathname !== value.history.location.pathname)) {
 
-              // console.log("temp3.history.location", value.history.location
-              //   , prevValue.history.location.pathname
-              //   , value.history.location.pathname
-              // );
+          //     // console.log("temp3.history.location", value.history.location
+          //     //   , prevValue.history.location.pathname
+          //     //   , value.history.location.pathname
+          //     // );
 
-              changes.push({
-                key,
-                value,
-                prevValue,
-              });
+          //     changes.push({
+          //       key,
+          //       value,
+          //       prevValue,
+          //     });
 
-            }
+          //   }
 
-            break;
+          //   break;
 
-          case "uri":
+          // case "uri":
 
-            if (value instanceof URI) {
+          //   if (value instanceof URI) {
 
-              if (!prevValue || !(prevValue instanceof URI) || prevValue.resource() !== value.resource()) {
+          //     if (!prevValue || !(prevValue instanceof URI) || prevValue.resource() !== value.resource()) {
 
-                changes.push({
-                  key,
-                  value,
-                  prevValue,
-                });
+          //       changes.push({
+          //         key,
+          //         value,
+          //         prevValue,
+          //       });
 
-              }
+          //     }
 
-            }
-            else {
-              changes.push({
-                key,
-                value,
-                prevValue,
-              });
-            }
+          //   }
+          //   else {
+          //     changes.push({
+          //       key,
+          //       value,
+          //       prevValue,
+          //     });
+          //   }
 
-            break;
+          //   break;
 
           case "query":
 

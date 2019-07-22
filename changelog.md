@@ -1,3 +1,8 @@
+1.4.4
+=================================
+- Restore watch router changes
+- Restore watch uri changes
+
 1.4.3
 =================================
 - Restore watch query changes
