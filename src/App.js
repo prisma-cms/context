@@ -6,7 +6,7 @@ import shallowEqual from 'fbjs/lib/shallowEqual';
 
 export default createContext({}, function (prevContext, context) {
 
-  let changes = 0;
+  let changes = [];
 
   /**
    * Сначала проверяем нативными средствами на идентичность свойств первого уровня.
@@ -26,7 +26,7 @@ export default createContext({}, function (prevContext, context) {
 
       if (value !== undefined && value !== prevValue) {
 
-        // console.log("calculateChangedBits", key, prevValue, value);
+        // console.log("@prisma-cms/context changed", key, prevValue, value);
 
         switch (key) {
 
@@ -39,7 +39,11 @@ export default createContext({}, function (prevContext, context) {
               //   , value.history.location.pathname
               // );
 
-              changes++;
+              changes.push({
+                key,
+                value,
+                prevValue,
+              });
 
             }
 
@@ -52,7 +56,7 @@ export default createContext({}, function (prevContext, context) {
 
               if (process.env.NODE_ENV === "development") {
 
-                console.error("calculateChangedBits query !shallowEqual", prevValue, value);
+                console.error("@prisma-cms/context changed query !shallowEqual", prevValue, value);
 
               }
 
@@ -60,14 +64,18 @@ export default createContext({}, function (prevContext, context) {
 
                 if (process.env.NODE_ENV === "development") {
 
-                  console.error("calculateChangedBits query !JSON.stringify Equal",
+                  console.error("@prisma-cms/context changed query !JSON.stringify Equal",
                     JSON.stringify(prevValue, true, 2),
                     JSON.stringify(value, true, 2)
                   );
 
                 }
 
-                changes++;
+                changes.push({
+                  key,
+                  value,
+                  prevValue,
+                });
               }
 
             }
@@ -75,7 +83,11 @@ export default createContext({}, function (prevContext, context) {
 
             break;
 
-          default: changes++;
+          default: changes.push({
+            key,
+            value,
+            prevValue,
+          });
 
         }
 
@@ -85,11 +97,11 @@ export default createContext({}, function (prevContext, context) {
   }
 
 
-  if (changes && process.env.NODE_ENV === "development") {
+  if (changes.length && process.env.NODE_ENV === "development") {
 
-    console.error("calculateChangedBits changes", changes);
+    console.error("@prisma-cms/context changed changes", changes);
 
   }
 
-  return changes;
+  return changes.length;
 });

@@ -1,3 +1,7 @@
+1.4.1
+=================================
+- Added more information about changes
+
 1.4.0
 =================================
 - Upgrade boilerplate
