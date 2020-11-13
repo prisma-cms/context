@@ -1,7 +1,7 @@
 {
   "name": "@prisma-cms/context",
   "description": "Context for @prisma-cms",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": false,
   "main": "dist",
   "scripts": {
@@ -15,6 +15,9 @@
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
     "test:all": "yarn lint && yarn types && yarn test",
+    "preversion": "yarn test",
+    "postversion": "npm publish",
+    "postpublish": "git push origin --all; git push origin --tags",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

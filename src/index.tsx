@@ -1,7 +1,8 @@
 import { createContext } from 'react'
 
-// TODO add generic
-export interface PrismaCmsContext extends Record<string, any> {}
+import { PrismaCmsContext } from './interfaces'
+
+export * from './interfaces'
 
 const context: PrismaCmsContext = {}
 
