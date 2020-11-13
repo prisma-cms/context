@@ -3,8 +3,6 @@ import {
 } from 'react';
 import shallowEqual from 'fbjs/lib/shallowEqual';
 
-import URI from "urijs";
-
 export default createContext({}, function (prevContext, context) {
 
   let changes = [];
