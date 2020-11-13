@@ -1,7 +1,7 @@
 {
   "name": "@prisma-cms/context",
   "description": "Context for @prisma-cms",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "private": false,
   "main": "dist",
   "scripts": {
@@ -15,11 +15,11 @@
     "lint": "eslint . --ext ts --ext tsx --ext js",
     "test": "jest",
     "test:all": "yarn lint && yarn types && yarn test",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
     "preversion": "yarn test",
     "postversion": "npm publish",
-    "postpublish": "git push origin --all; git push origin --tags",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "postpublish": "git push origin --all; git push origin --tags"
   },
   "husky": {
     "hooks": {
