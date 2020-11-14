@@ -6,11 +6,8 @@ const MainPage: React.FC = (props) => {
   return (
     <>
       <Head>
-        <title>Component boilerplate</title>
-        <meta
-          name="description"
-          content="Component boilerplate for prisma-cms"
-        />
+        <title>@prisma-cms/context</title>
+        <meta name="description" content="Context for prisma-cms" />
       </Head>
       <App.Provider
         value={{
