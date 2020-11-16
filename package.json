@@ -19,7 +19,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "preversion": "yarn test",
-    "postversion": "npm publish",
+    "postversion": "yarn run npm publish",
     "postpublish": "git push origin --all; git push origin --tags"
   },
   "husky": {
