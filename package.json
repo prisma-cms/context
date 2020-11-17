@@ -1,7 +1,7 @@
 {
   "name": "@prisma-cms/context",
   "description": "Context for @prisma-cms",
-  "version": "2.0.13",
+  "version": "2.0.14",
   "private": false,
   "main": "dist",
   "scripts": {
